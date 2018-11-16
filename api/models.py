@@ -1,5 +1,5 @@
 from django.db import models
-
+import random
 # Create your models here.
 
 class ProgramRequest(models.Model):
@@ -88,8 +88,22 @@ class ProgramRequest(models.Model):
 		choices = LANG_CHOICES,
 		max_length=100
 	)
+	
+	status = models.CharField(
+		choices = (
+			('ns', 'Not started (do not touch)'),
+			('ip', 'In progress'),
+			('fn', 'Finished'),
+		),
+		default='ns',
+		max_length=100
+	)
+	
+	email = models.EmailField(
+		max_length=254
+	)
 
 	time = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
-		return '%s, %s, %s, %s' % (self.program, self.region, self.language, self.time)
+		return '%s, %s, %s, %s, %s, %s' % (self.program, self.region, self.language, self.email, self.status, self.time)
