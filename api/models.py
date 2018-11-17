@@ -103,7 +103,13 @@ class ProgramRequest(models.Model):
 		max_length=254
 	)
 
+	id = models.CharField(
+		primary_key =True,
+		max_length = 4,
+		default=random.randint(0, 9999)
+	)
+
 	time = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
-		return '%s, %s, %s, %s, %s, %s' % (self.program, self.region, self.language, self.email, self.status, self.time)
+		return '%s, %s, %s, %s, %s, %s, %s' % (self.program, self.region, self.language, self.email, self.id, self.status, self.time)
