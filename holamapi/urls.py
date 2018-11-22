@@ -17,10 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from api.resources import ProgramRequestResource
+from api import views
+from api.views import *
 
 programrequest_resource = ProgramRequestResource()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(programrequest_resource.urls))
+    path('', get_requests, name='view requests'),
+    path('api/view/', include(programrequest_resource.urls)),
+    path('api/<int:id>', id_view, name='status'),
+    path('api/edit/<int:id>', edit_request, name='edit'),
+    path('api/', get_request_form, name='write')
 ]

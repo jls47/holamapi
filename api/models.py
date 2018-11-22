@@ -94,6 +94,7 @@ class ProgramRequest(models.Model):
 			('ns', 'Not started (do not touch)'),
 			('ip', 'In progress'),
 			('fn', 'Finished'),
+			('x', 'Canceled')
 		),
 		default='ns',
 		max_length=100

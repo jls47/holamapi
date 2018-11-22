@@ -1,0 +1,11 @@
+{% extends "api/base.html" %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+	<h1>{{title}}</h1>
+	<hr>
+	{% for request in requests %}
+	<p><strong>{{request.email}}</strong> | <strong>{{request.program}}</strong> | <strong>{{request.region}}</strong> | <strong>{{request.language}}</strong> | {{request.status}}</p>
+	{% endfor %}
+{% endblock %}
