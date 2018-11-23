@@ -12,13 +12,15 @@ def id_view(request, id):
 def get_request_form(request):
 	if request.method == "POST":
 		form = ProgramRequestForm(request.POST)
+		print('AAA')
 		if form.is_valid():
 			model_instance = form.save()
 			model_instance.time = timezone.now()
-			model_instance.save()
+			model_instance.update()
 			print("Save successful")
 			return HttpResponseRedirect('/api/%s' % model_instance.id)
 	else:
+		print('AAAAAA')
 		form = ProgramRequestForm(initial={'program': ProgramRequest.program, 'region': ProgramRequest.region, 'language': ProgramRequest.language, 'email': ProgramRequest.email, 'id': ProgramRequest.id, 'status': ProgramRequest.status, 'time': ProgramRequest.time})
 	return render(request, 'api/make_request.html', {'form': form})
 
