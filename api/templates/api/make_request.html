@@ -3,10 +3,10 @@
 {% block title %} {% endblock %}
 
 {% block content %}
-<form action = "/" method="POST">
+<form action = "" method="POST">
 	{% csrf_token %}
 	{{form.as_p}}
 	{{form.media}}
-	<input type="submit" value="Publish" class="submit" name="Post"/>
+	<input type="submit" value="OK" class="submit" name="Post"/>
 </form>
 {% endblock %}
